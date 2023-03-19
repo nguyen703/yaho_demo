@@ -93,6 +93,7 @@ analysis_benchmark.json
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/**/*.lock
 
 # Symbolication related
 app.*.symbols
