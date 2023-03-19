@@ -17,7 +17,12 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<Failure, List<User>?>> getUsers({required int page}) async {
     try {
-      final users = await userRemoteDatasource.getUsers(page: page);
+      final userModel = await userRemoteDatasource.getUserModel(page: page);
+      if (userModel.pageInfo != null) {
+        userLocalDatasource.savePaginationData(userModel.pageInfo!);
+      }
+
+      final users = userModel.users;
       return Right(users);
     } catch (e) {
       if (e is ServerException) {

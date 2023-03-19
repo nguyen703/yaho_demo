@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:yaho_demo/common/styles/styles.dart';
+import 'package:yaho_demo/presentation/blocs/user/user_cubit.dart';
 
 import 'init_dependencies.dart' as di;
 import 'presentation/views/pages/home_page.dart';
@@ -19,7 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Yaho! Demo',
       theme: BaseTheme.theme,
-      home: const MyHomePage(),
+      home: BlocProvider.value(
+          value: GetIt.instance.get<UserCubit>(), child: const MyHomePage()),
     );
   }
 }
