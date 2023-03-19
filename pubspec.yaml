@@ -1,0 +1,57 @@
+name: yaho_demo
+description: Demo project for Yaho.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Flutter helper
+  flutter_svg: ^2.0.4
+  cached_network_image: ^3.2.3
+  either_dart: ^0.3.0
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
+  shared_preferences: ^2.0.18
+
+  # Network
+  http: ^0.13.5
+
+  # DI
+  get_it: ^7.2.0
+
+  # State management
+  flutter_bloc: ^8.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  flutter_gen_runner:
+  flutter_lints: ^2.0.1
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: InterBold
+      fonts:
+        - asset: assets/fonts/Inter-Bold.ttf
+    - family: InterRegular
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+    - family: InterSemiBold
+      fonts:
+        - asset: assets/fonts/Inter-SemiBold.ttf
