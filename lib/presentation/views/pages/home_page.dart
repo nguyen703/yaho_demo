@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yaho_demo/common/styles/base_color.dart';
 import 'package:yaho_demo/domain/entities/user/page_info.dart';
 import 'package:yaho_demo/domain/entities/user/user.dart';
-import 'package:yaho_demo/gen/assets.gen.dart';
 import 'package:yaho_demo/presentation/blocs/user/user_cubit.dart';
 import 'package:yaho_demo/presentation/blocs/user/user_state.dart';
 import 'package:yaho_demo/presentation/views/widgets/common_app_bar_widget.dart';
@@ -16,6 +14,7 @@ import '../widgets/user/user_content_placeholder_widget.dart';
 import '../widgets/user/user_grid_tile_reached_max_widget.dart';
 import '../widgets/user/user_grid_tile_widget.dart';
 import '../widgets/user/user_list_tile_widget.dart';
+import '../widgets/user/user_trailing_view_switch_button.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -53,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return state.whenOrNull(
                     loaded: (pageInfo, users, isListView) {
                       // Only show Switch button when data is loaded
-                      return TrailingViewSwitchButtonWidget(
+                      return UserTrailingViewSwitchButton(
                         onTap: () {
                           _userCubit.changeViewType(_scrollController);
                         },
@@ -155,32 +154,5 @@ class _MyHomePageState extends State<MyHomePage> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, mainAxisSpacing: 16, crossAxisSpacing: 16),
     );
-  }
-}
-
-class TrailingViewSwitchButtonWidget extends StatelessWidget {
-  const TrailingViewSwitchButtonWidget({
-    super.key,
-    required this.isListView,
-    required this.onTap,
-  });
-
-  final bool isListView;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.only(right: 16.0),
-          child: SvgPicture.asset(
-            isListView ? Assets.icons.gridViewIcon : Assets.icons.listViewIcon,
-            width: 24,
-            height: 24,
-            alignment: Alignment.centerRight,
-            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-          ),
-        ));
   }
 }
