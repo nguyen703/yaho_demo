@@ -4,7 +4,7 @@ import 'package:yaho_demo/common/styles/styles.dart';
 import 'package:yaho_demo/common/utils/user_helper.dart';
 import 'package:yaho_demo/domain/entities/user/user.dart';
 
-import '../user_avatar_placeholder_widget.dart';
+import 'user_avatar_placeholder_widget.dart';
 
 class UserGridTileWidget extends StatelessWidget {
   const UserGridTileWidget({Key? key, required this.user}) : super(key: key);

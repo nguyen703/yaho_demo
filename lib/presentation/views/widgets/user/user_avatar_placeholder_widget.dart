@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yaho_demo/gen/assets.gen.dart';
 
-import '../../../common/styles/styles.dart';
+import '../../../../common/styles/styles.dart';
 
 class UserAvatarPlaceholderWidget extends StatelessWidget {
   const UserAvatarPlaceholderWidget({Key? key}) : super(key: key);
