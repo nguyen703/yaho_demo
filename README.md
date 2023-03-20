@@ -14,7 +14,9 @@ This is a demo project for Yaho!. Please read the instruction carefully for comp
 - Should have clear UX/UI presentations.
 - Have a compiling guideline attached.
 
-### Packages
+## COMPILING GUIDELINE
+
+### Overview for build-helper
 
 In this project, I use some packages to support the development phase. Such as:
 
@@ -31,8 +33,7 @@ Besides, here are my Android Studio plugins that have helped a lot:
 For more information, please go to the documentation of each packages and plugins.
 You can find below the step-by-step compiling guideline.
 
-
-## COMPILING GUIDELINE
+### Step-by-step
 
 If you got the Flutter SDK and Dart SDK already, and you did set up its environment completely, you can continue to the following steps. If not, please check the [Flutter documentation](https://docs.flutter.dev) here.  
 
