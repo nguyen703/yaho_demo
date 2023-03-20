@@ -1,18 +1,21 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yaho_demo/data/datasources/user/user_local_datasource.dart';
 import 'package:yaho_demo/data/datasources/user/user_remote_datasource.dart';
 import 'package:yaho_demo/data/repositories/user/user_repository_impl.dart';
-import 'package:yaho_demo/presentation/blocs/user/user_bloc.dart';
 
 import 'domain/repositories/user/user_repository.dart';
+import 'presentation/blocs/user/user_cubit.dart';
 
 final di = GetIt.instance;
+final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 
 Future<void> init() async {
   // Blocs
-  di.registerLazySingleton<UserBloc>(() => UserBloc(userRepository: di()));
+  di.registerLazySingleton<UserCubit>(() => UserCubit(userRepository: di()));
 
   // Repositories
   di.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(
@@ -27,5 +30,5 @@ Future<void> init() async {
   // External packages
   final sharedPreferences = await SharedPreferences.getInstance();
   di.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
-  di.registerFactory<http.Client>(() => http.Client());
+  di.registerLazySingleton<http.Client>(() => http.Client());
 }
