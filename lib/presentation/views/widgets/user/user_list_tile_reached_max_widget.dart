@@ -8,9 +8,10 @@ class UserListTileReachedMaxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 32,
+      padding: const EdgeInsets.only(bottom: 16),
+      height: 40,
       child: Text(
-        "You got all the users ;)",
+        "Hi, there are no users left 😊",
         style: BaseTextStyle.body2(color: BaseColor.grey300),
       ),
     );

@@ -14,7 +14,7 @@ class UserGridTileReachedMaxWidget extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
           child: Center(
             child: Text(
-              "You got all the users ;)",
+              "Hi, there are no users left 😊",
               style: BaseTextStyle.body2(color: BaseColor.grey300),
             ),
           )),

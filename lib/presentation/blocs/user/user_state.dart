@@ -9,5 +9,6 @@ class UserState with _$UserState {
   const factory UserState.loading() = UserStateLoading;
   const factory UserState.loaded(
       PageInfo pageInfo, List<User> users, bool isListview) = UserStateLoaded;
+  const factory UserState.empty() = UserStateEmpty;
   const factory UserState.error() = UserStateError;
 }
