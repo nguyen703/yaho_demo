@@ -60,9 +60,14 @@ In a short period of time, I must admit that I cannot list out all the constrain
 
 ### Project architecture
 
-- Architecture: CLEAN
+- Architecture: CLEAN<br />
 Separation of Concerns, Maintainability, Testability, etc., we can tell this architecture keeps Software Development at its highest standard. By applying this, we also apply uncle Bob's best practices [SOLID](https://en.wikipedia.org/wiki/SOLID). 
-- State management: BLoC (Cubit in particular):
+- State management: BLoC (Cubit in particular):<br />
 This is the most well-known state management that is used in almost every professional environment in my opinion. For a light project, I prefer using Cubit to minimize the boilerplate codes and decrease shipping-time but still get the power of BLoC.
-- Dependency Injection: GetIt
+- Dependency Injection: GetIt<br />
 GetIt helps us to get rid of all those dependencies and works well with other State Management.
+
+### What is not included in this project
+
+- Localization and internationalization: Text hardcoded in the codes
+- Animation when switching view type
