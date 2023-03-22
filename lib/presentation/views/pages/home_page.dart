@@ -2,18 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yaho_demo/common/styles/base_color.dart';
-import 'package:yaho_demo/domain/entities/user/page_info.dart';
-import 'package:yaho_demo/domain/entities/user/user.dart';
 import 'package:yaho_demo/presentation/blocs/user/user_cubit.dart';
 import 'package:yaho_demo/presentation/blocs/user/user_state.dart';
 import 'package:yaho_demo/presentation/views/widgets/common_app_bar_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yaho_demo/presentation/views/widgets/user/user_list_tile_reached_max_widget.dart';
 
 import '../widgets/user/user_content_placeholder_widget.dart';
-import '../widgets/user/user_grid_tile_reached_max_widget.dart';
-import '../widgets/user/user_grid_tile_widget.dart';
-import '../widgets/user/user_list_tile_widget.dart';
+import '../widgets/user/user_grid_view_widget.dart';
+import '../widgets/user/user_list_view_widget.dart';
 import '../widgets/user/user_trailing_view_switch_button.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -78,9 +74,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       return state.when(
                           loaded: (pageInfo, users, isListView) {
                             if (isListView) {
-                              return buildListView(users, pageInfo);
+                              return UserListViewWidget(
+                                  users: users,
+                                  pageInfo: pageInfo,
+                                  onReachMaxExtent: () =>
+                                      _userCubit.loadMore(users));
                             }
-                            return buildGridView(users, pageInfo);
+                            return UserGridViewWidget(
+                                users: users,
+                                pageInfo: pageInfo,
+                                onReachMaxExtent: () =>
+                                    _userCubit.loadMore(users));
                           },
                           loading: () => const SliverToBoxAdapter(
                                 child: Padding(
@@ -109,50 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
         ),
       ),
-    );
-  }
-
-  Widget buildListView(List<User> users, PageInfo pageInfo) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          if (index == users.length) {
-            _userCubit.loadMore(users);
-            if (pageInfo.page == pageInfo.totalPages) {
-              return const UserListTileReachedMaxWidget();
-            }
-            return const CupertinoActivityIndicator();
-          }
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: UserListTileWidget(
-              key: ValueKey(users[index]),
-              user: users[index],
-            ),
-          );
-        },
-        childCount: users.length + 1,
-      ),
-    );
-  }
-
-  Widget buildGridView(List<User> users, PageInfo pageInfo) {
-    return SliverGrid(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          if (index == users.length) {
-            _userCubit.loadMore(users);
-            if (pageInfo.page == pageInfo.totalPages) {
-              return const UserGridTileReachedMaxWidget();
-            }
-            return const CupertinoActivityIndicator();
-          }
-          return UserGridTileWidget(user: users[index]);
-        },
-        childCount: users.length + 1,
-      ),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 16, crossAxisSpacing: 16),
     );
   }
 }
