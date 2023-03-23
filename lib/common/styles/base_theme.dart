@@ -11,7 +11,7 @@ class BaseTheme {
     return ThemeData(
         fontFamily: BaseTextStyle.baseSemiBoldFont,
         primaryColor: Colors.white,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: BaseColor.green800,
         primarySwatch: ColorHelper.createMaterialColor(BaseColor.green600));
   }
 
@@ -19,7 +19,7 @@ class BaseTheme {
     return ThemeData(
         fontFamily: BaseTextStyle.baseSemiBoldFont,
         primaryColor: BaseColor.green700,
-        scaffoldBackgroundColor: BaseColor.green800,
+        scaffoldBackgroundColor: Colors.white,
         primarySwatch: ColorHelper.createMaterialColor(BaseColor.green200));
   }
 }
