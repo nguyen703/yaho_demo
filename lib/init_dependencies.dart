@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
@@ -8,6 +7,7 @@ import 'package:yaho_demo/data/datasources/user/user_remote_datasource.dart';
 import 'package:yaho_demo/data/repositories/user/user_repository_impl.dart';
 
 import 'domain/repositories/user/user_repository.dart';
+import 'presentation/blocs/theme/theme_cubit.dart';
 import 'presentation/blocs/user/user_cubit.dart';
 
 final di = GetIt.instance;
@@ -16,6 +16,7 @@ final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 Future<void> init() async {
   // Blocs
   di.registerLazySingleton<UserCubit>(() => UserCubit(userRepository: di()));
+  di.registerSingleton<ThemeCubit>(ThemeCubit());
 
   // Repositories
   di.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(

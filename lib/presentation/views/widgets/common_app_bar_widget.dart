@@ -13,7 +13,8 @@ class CommonAppBarWidget extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading ?? const SizedBox.shrink(),
-      title: Text(title ?? "Appbar"),
+      title: Text(title ?? "Appbar",
+          style: TextStyle(color: Theme.of(context).primaryColor)),
       centerTitle: true,
       actions: trailing,
     );
