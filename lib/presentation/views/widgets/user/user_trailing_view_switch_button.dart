@@ -23,7 +23,8 @@ class UserTrailingViewSwitchButton extends StatelessWidget {
             width: 24,
             height: 24,
             alignment: Alignment.centerRight,
-            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+            colorFilter: ColorFilter.mode(
+                Theme.of(context).primaryColor, BlendMode.srcIn),
           ),
         ));
   }

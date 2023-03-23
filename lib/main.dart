@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:yaho_demo/common/styles/styles.dart';
+import 'package:yaho_demo/presentation/blocs/theme/theme_cubit.dart';
 import 'package:yaho_demo/presentation/blocs/user/user_cubit.dart';
 
 import 'init_dependencies.dart' as di;
@@ -19,13 +19,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      scaffoldMessengerKey: scaffoldKey,
-      title: 'Yaho! Demo',
-      theme: BaseTheme.theme,
-      home: BlocProvider.value(
-          value: GetIt.instance.get<UserCubit>(), child: const MyHomePage()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: GetIt.instance.get<UserCubit>()),
+        BlocProvider.value(value: GetIt.instance.get<ThemeCubit>()),
+      ],
+      child: BlocBuilder<ThemeCubit, ThemeData>(
+        builder: (context, themeData) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            scaffoldMessengerKey: scaffoldKey,
+            title: 'Yaho! Demo',
+            theme: themeData,
+            home: BlocProvider.value(
+                value: GetIt.instance.get<UserCubit>(),
+                child: const MyHomePage()),
+          );
+        },
+      ),
     );
   }
 }
