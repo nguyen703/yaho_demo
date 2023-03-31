@@ -15,7 +15,7 @@ This is a demo project for Yaho!. Please read the instruction carefully for comp
 - Have a compiling guideline attached.
 
 ## Screens
-![Screen Preview](https://github.com/nguyen703/yaho_demo/blob/main/screen-preview.png?raw=true)
+![Screen Preview](https://github.com/nguyen703/yaho_demo/blob/main/assets/images/screen-preview.png)
 
 ## COMPILING GUIDELINE
 
