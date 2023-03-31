@@ -14,6 +14,9 @@ This is a demo project for Yaho!. Please read the instruction carefully for comp
 - Should have clear UX/UI presentations.
 - Have a compiling guideline attached.
 
+## Screens
+![Screen Preview](https://github.com/nguyen703/yaho_demo/blob/main/screen-preview.png?raw=true)
+
 ## COMPILING GUIDELINE
 
 ### Overview for build-helper
